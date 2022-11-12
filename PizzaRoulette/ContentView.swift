@@ -90,7 +90,7 @@ struct ContentView: View {
             .padding(.bottom, 20)
             Button {
                 showPizza = true
-                var tempPizzaList = Array(0...(Int(upperNumber) ?? 0))
+                var tempPizzaList = Array((Int(lowerNumber) ?? 0)...(Int(upperNumber) ?? 0))
                 tempPizzaList.shuffle()
                 while tempPizzaList.count < 100 {
                     tempPizzaList.append(contentsOf: tempPizzaList)
