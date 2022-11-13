@@ -8,9 +8,17 @@
 import SwiftUI
 import Combine
 
+#if canImport(UIKit)
+extension View {
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+#endif
+
 struct ContentView: View {
     @State var showPizza = false
-    @State var lowerNumber = "0"
+    @State var lowerNumber = "1"
     @State var upperNumber = "10"
     @State var pizzaNum = 0
     @State var pizzaList:[Int] = []
@@ -19,12 +27,22 @@ struct ContentView: View {
     @State var scrollView: GeometryProxy?
     @State var offset: CGFloat = 0
     
+    let textLimit = 3
+    
+    func limitText(_ textLimit: Int, input: String) -> String {
+        if input.count > textLimit {
+            return String(input.prefix(textLimit))
+        } else {
+            return input
+        }
+    }
+    
     var body: some View {
         
         VStack {
             Spacer()
             if !showPizza {
-                Text("Input pizza ranges...")
+                Text("Input pizza ranges...").font(.system(size: 24))
             } else {
                 GeometryReader { scrollView in
                     ScrollView {
@@ -47,8 +65,8 @@ struct ContentView: View {
                     .overlay {
                         LinearGradient(gradient: Gradient(stops: [
                             .init(color: .white, location: 0.0),
-                            .init(color: .clear, location: 0.05),
-                            .init(color: .clear, location: 0.95),
+                            .init(color: .clear, location: 0.2),
+                            .init(color: .clear, location: 0.8),
                             .init(color: .white, location: 1.0),
                         ]), startPoint: .top, endPoint: .bottom)
                     }
@@ -59,12 +77,15 @@ struct ContentView: View {
             }
             Spacer()
             HStack {
-                TextField("Lower number", text: $lowerNumber)
+                TextField("Min", text: $lowerNumber)
                     .keyboardType(.numberPad)
                     .multilineTextAlignment(.center)
-                    .background(Color(.systemFill))
-                    .cornerRadius(6)
+                    .font(.system(size: 24))
+                    .overlay( RoundedRectangle(cornerRadius: 12)
+                        .stroke(Color.gray, lineWidth: 2)
+                    )
                     .onReceive(Just(lowerNumber)) { newValue in
+                        lowerNumber = limitText(textLimit, input: lowerNumber)
                         let filtered = newValue.filter { "0123456789".contains($0) }
                         if filtered != newValue {
                             self.lowerNumber = filtered
@@ -73,12 +94,15 @@ struct ContentView: View {
                     .padding(.leading, 40)
                     .padding(.trailing, 40)
                 
-                TextField("Upper number", text: $upperNumber)
+                TextField("Max", text: $upperNumber)
                     .keyboardType(.numberPad)
-                    .background(Color(.systemFill))
-                    .cornerRadius(6)
                     .multilineTextAlignment(.center)
+                    .font(.system(size: 24))
+                    .overlay( RoundedRectangle(cornerRadius: 12)
+                        .stroke(Color.gray, lineWidth: 2)
+                    )
                     .onReceive(Just(upperNumber)) { newValue in
+                        upperNumber = limitText(textLimit, input: upperNumber)
                         let filtered = newValue.filter { "0123456789".contains($0) }
                         if filtered != newValue {
                             self.upperNumber = filtered
@@ -89,8 +113,14 @@ struct ContentView: View {
             }
             .padding(.bottom, 20)
             Button {
-                showPizza = true
-                var tempPizzaList = Array((Int(lowerNumber) ?? 0)...(Int(upperNumber) ?? 0))
+                var tempPizzaList:[Int] = []
+                let tempLowerNum:Int = (Int(lowerNumber) ?? 0)
+                let tempUpperNum:Int = (Int(upperNumber) ?? 0)
+                if tempLowerNum >= tempUpperNum {
+                    return
+                }
+                let numRange = (tempLowerNum...tempUpperNum)
+                tempPizzaList.append(contentsOf: numRange)
                 tempPizzaList.shuffle()
                 while tempPizzaList.count < 100 {
                     tempPizzaList.append(contentsOf: tempPizzaList)
@@ -99,8 +129,10 @@ struct ContentView: View {
                 pizzaList = tempPizzaList
                 offset = 0
                     withAnimation(Animation.timingCurve(0, 0.8, 0.2, 1, duration: 10)) {
-                        offset = CGFloat(-(proxy?.size.height ?? 0) + (scrollView?.size.height ?? 0))
+                        offset = CGFloat(-(proxy?.size.height ?? 0) + (scrollView?.size.height ?? 0)) + 80
                     }
+                showPizza = true
+                self.hideKeyboard()
             } label: {
                 Text("Prøv lykken!")
                     .padding(20)
@@ -110,6 +142,9 @@ struct ContentView: View {
             .foregroundColor(.black)
         }
         .padding()
+        .onTapGesture {
+            self.hideKeyboard()
+        }
     }
 }
 
