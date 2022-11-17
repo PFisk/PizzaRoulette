@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import Haptica
 
 #if canImport(UIKit)
 extension View {
@@ -37,6 +38,41 @@ struct ContentView: View {
         }
     }
     
+    func hapticSeq(type: String, amount: Int, delay: Double) -> Void {
+        
+        var pattern = ""
+        
+        switch (type) {
+        case "heavy":
+            for _ in 0...amount {
+                pattern += "O-"
+            }
+            Haptic.play(pattern, delay: delay)
+        case "medium":
+            for _ in 0...amount {
+                pattern += "o-"
+            }
+            Haptic.play(pattern, delay: delay)
+        case "light":
+            for _ in 0...amount {
+                pattern += ".-"
+            }
+            Haptic.play(pattern, delay: delay)
+        case "rigid":
+            for _ in 0...amount {
+                pattern += "X-"
+            }
+            Haptic.play(pattern, delay: delay)
+        case "soft":
+            for _ in 0...amount {
+                pattern += "x-"
+            }
+            Haptic.play(pattern, delay: delay)
+        default:
+            return
+        }
+    }
+    
     var body: some View {
         
         VStack {
@@ -48,7 +84,7 @@ struct ContentView: View {
                     ScrollView {
                         VStack {
                             ForEach(pizzaList, id: \.self) { pizza in
-                                Text("\(pizza)").font(.system(size: 200))
+                                Text("\(pizza)").font(.custom("Cubano-Regular", size: 200))
                                 //Text("Global : (\(Int(scrollView.frame(in: .global).midX)), \(Int(scrollView.frame(in: .global).midY))) Local: (\(Int(scrollView.frame(in: .local).midX)), \(Int(scrollView.frame(in: .local).midY)))")
                             }
                         }
@@ -110,6 +146,7 @@ struct ContentView: View {
             }
             .padding(.bottom, 20)
             Button {
+                //Haptic.impact(.light).generate()
                 var tempPizzaList:[Int] = []
                 let tempLowerNum:Int = (Int(lowerNumber) ?? 0)
                 let tempUpperNum:Int = (Int(upperNumber) ?? 0)
@@ -128,8 +165,12 @@ struct ContentView: View {
                 pizzaList = tempPizzaList
                 offset = 0
                     withAnimation(Animation.timingCurve(0, 0.8, 0.2, 1, duration: 10)) {
-                        offset = CGFloat(-(proxy?.size.height ?? 0) + (scrollView?.size.height ?? 0)) + 80
+                        offset = CGFloat(-(proxy?.size.height ?? 0) + (scrollView?.size.height ?? 0)) + 70
                     }
+                hapticSeq(type: "heavy", amount: 35, delay: 0.05)
+                hapticSeq(type: "medium", amount: 35, delay: 0.1)
+                hapticSeq(type: "light", amount: 20, delay: 0.14)
+                hapticSeq(type: "light", amount: 10, delay: 0.2)
                 showPizza = true
                 self.hideKeyboard()
             } label: {

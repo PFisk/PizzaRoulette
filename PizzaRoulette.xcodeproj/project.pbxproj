@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4AD9747D2926CB7F009F8013 /* TrackableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD9747C2926CB7F009F8013 /* TrackableScrollView.swift */; };
+		4AD9747F2926CC16009F8013 /* ScrollOffsetPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD9747E2926CC16009F8013 /* ScrollOffsetPreferenceKey.swift */; };
+		4AD974822926D64F009F8013 /* Cubano-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4AD974812926D58C009F8013 /* Cubano-Regular.ttf */; };
+		4AD974882926E782009F8013 /* Haptica.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD974872926E782009F8013 /* Haptica.xcframework */; };
+		4AD974892926E782009F8013 /* Haptica.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD974872926E782009F8013 /* Haptica.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4ADC5C00291FEB0D007A89F7 /* PizzaRouletteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADC5BFF291FEB0D007A89F7 /* PizzaRouletteApp.swift */; };
 		4ADC5C02291FEB0D007A89F7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADC5C01291FEB0D007A89F7 /* ContentView.swift */; };
 		4ADC5C04291FEB0D007A89F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4ADC5C03291FEB0D007A89F7 /* Assets.xcassets */; };
@@ -33,7 +38,26 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		4AD9748A2926E782009F8013 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4AD974892926E782009F8013 /* Haptica.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		4AD9747C2926CB7F009F8013 /* TrackableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackableScrollView.swift; sourceTree = "<group>"; };
+		4AD9747E2926CC16009F8013 /* ScrollOffsetPreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollOffsetPreferenceKey.swift; sourceTree = "<group>"; };
+		4AD974812926D58C009F8013 /* Cubano-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Cubano-Regular.ttf"; path = "../../../../../Downloads/Cubano-Regular.ttf"; sourceTree = "<group>"; };
+		4AD974832926D7C9009F8013 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4AD974872926E782009F8013 /* Haptica.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Haptica.xcframework; path = Carthage/Build/Haptica.xcframework; sourceTree = "<group>"; };
 		4ADC5BFC291FEB0D007A89F7 /* PizzaRoulette.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PizzaRoulette.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ADC5BFF291FEB0D007A89F7 /* PizzaRouletteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaRouletteApp.swift; sourceTree = "<group>"; };
 		4ADC5C01291FEB0D007A89F7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -51,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AD974882926E782009F8013 /* Haptica.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +96,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4AD974802926D560009F8013 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				4AD974812926D58C009F8013 /* Cubano-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		4AD974862926E782009F8013 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4AD974872926E782009F8013 /* Haptica.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		4ADC5BF3291FEB0C007A89F7 = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +119,7 @@
 				4ADC5C0F291FEB0D007A89F7 /* PizzaRouletteTests */,
 				4ADC5C19291FEB0D007A89F7 /* PizzaRouletteUITests */,
 				4ADC5BFD291FEB0D007A89F7 /* Products */,
+				4AD974862926E782009F8013 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -94,10 +136,14 @@
 		4ADC5BFE291FEB0D007A89F7 /* PizzaRoulette */ = {
 			isa = PBXGroup;
 			children = (
+				4AD974832926D7C9009F8013 /* Info.plist */,
 				4ADC5BFF291FEB0D007A89F7 /* PizzaRouletteApp.swift */,
 				4ADC5C01291FEB0D007A89F7 /* ContentView.swift */,
+				4AD974802926D560009F8013 /* Fonts */,
 				4ADC5C03291FEB0D007A89F7 /* Assets.xcassets */,
 				4ADC5C05291FEB0D007A89F7 /* Preview Content */,
+				4AD9747C2926CB7F009F8013 /* TrackableScrollView.swift */,
+				4AD9747E2926CC16009F8013 /* ScrollOffsetPreferenceKey.swift */,
 			);
 			path = PizzaRoulette;
 			sourceTree = "<group>";
@@ -137,6 +183,8 @@
 				4ADC5BF8291FEB0D007A89F7 /* Sources */,
 				4ADC5BF9291FEB0D007A89F7 /* Frameworks */,
 				4ADC5BFA291FEB0D007A89F7 /* Resources */,
+				4AD9748A2926E782009F8013 /* Embed Frameworks */,
+				4AD9748B2926E875009F8013 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -151,6 +199,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4ADC5C23291FEB0D007A89F7 /* Build configuration list for PBXNativeTarget "PizzaRouletteTests" */;
 			buildPhases = (
+				C28966FE82AB88D683D30022 /* [CP] Check Pods Manifest.lock */,
 				4ADC5C08291FEB0D007A89F7 /* Sources */,
 				4ADC5C09291FEB0D007A89F7 /* Frameworks */,
 				4ADC5C0A291FEB0D007A89F7 /* Resources */,
@@ -169,6 +218,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4ADC5C26291FEB0D007A89F7 /* Build configuration list for PBXNativeTarget "PizzaRouletteUITests" */;
 			buildPhases = (
+				7E24828E032E13B0C23B40C6 /* [CP] Check Pods Manifest.lock */,
 				4ADC5C12291FEB0D007A89F7 /* Sources */,
 				4ADC5C13291FEB0D007A89F7 /* Frameworks */,
 				4ADC5C14291FEB0D007A89F7 /* Resources */,
@@ -233,6 +283,7 @@
 			files = (
 				4ADC5C07291FEB0D007A89F7 /* Preview Assets.xcassets in Resources */,
 				4ADC5C04291FEB0D007A89F7 /* Assets.xcassets in Resources */,
+				4AD974822926D64F009F8013 /* Cubano-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,11 +303,78 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4AD9748B2926E875009F8013 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Haptica.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
+		};
+		7E24828E032E13B0C23B40C6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PizzaRoulette-PizzaRouletteUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C28966FE82AB88D683D30022 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PizzaRouletteTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4ADC5BF8291FEB0D007A89F7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AD9747F2926CC16009F8013 /* ScrollOffsetPreferenceKey.swift in Sources */,
+				4AD9747D2926CB7F009F8013 /* TrackableScrollView.swift in Sources */,
 				4ADC5C02291FEB0D007A89F7 /* ContentView.swift in Sources */,
 				4ADC5C00291FEB0D007A89F7 /* PizzaRouletteApp.swift in Sources */,
 			);
@@ -420,6 +538,7 @@
 				DEVELOPMENT_TEAM = Q882998SNY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PizzaRoulette/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -449,6 +568,7 @@
 				DEVELOPMENT_TEAM = Q882998SNY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PizzaRoulette/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -1,0 +1,11 @@
+framework module Haptica {
+  umbrella header "Haptica.h"
+
+  export *
+  module * { export * }
+}
+
+module Haptica.Swift {
+  header "Haptica-Swift.h"
+  requires objc
+}
