@@ -49,6 +49,7 @@ struct ContentView: View {
                         VStack {
                             ForEach(pizzaList, id: \.self) { pizza in
                                 Text("\(pizza)").font(.system(size: 200))
+                                //Text("Global : (\(Int(scrollView.frame(in: .global).midX)), \(Int(scrollView.frame(in: .global).midY))) Local: (\(Int(scrollView.frame(in: .local).midX)), \(Int(scrollView.frame(in: .local).midY)))")
                             }
                         }
                         .background(
@@ -81,9 +82,7 @@ struct ContentView: View {
                     .keyboardType(.numberPad)
                     .multilineTextAlignment(.center)
                     .font(.system(size: 24))
-                    .overlay( RoundedRectangle(cornerRadius: 12)
-                        .stroke(Color.gray, lineWidth: 2)
-                    )
+                    .background( RoundedRectangle(cornerRadius: 12) .fill(Color.init(red: 0.9, green: 0.9, blue: 0.9)))
                     .onReceive(Just(lowerNumber)) { newValue in
                         lowerNumber = limitText(textLimit, input: lowerNumber)
                         let filtered = newValue.filter { "0123456789".contains($0) }
@@ -98,9 +97,7 @@ struct ContentView: View {
                     .keyboardType(.numberPad)
                     .multilineTextAlignment(.center)
                     .font(.system(size: 24))
-                    .overlay( RoundedRectangle(cornerRadius: 12)
-                        .stroke(Color.gray, lineWidth: 2)
-                    )
+                    .background( RoundedRectangle(cornerRadius: 12) .fill(Color.init(red: 0.9, green: 0.9, blue: 0.9)))
                     .onReceive(Just(upperNumber)) { newValue in
                         upperNumber = limitText(textLimit, input: upperNumber)
                         let filtered = newValue.filter { "0123456789".contains($0) }
@@ -124,6 +121,8 @@ struct ContentView: View {
                 tempPizzaList.shuffle()
                 while tempPizzaList.count < 100 {
                     tempPizzaList.append(contentsOf: tempPizzaList)
+                }
+                for _ in 1...3 { tempPizzaList.append( Int.random(in: tempLowerNum...tempUpperNum))
                 }
                 pizzaNum = tempPizzaList.last ?? 0
                 pizzaList = tempPizzaList
