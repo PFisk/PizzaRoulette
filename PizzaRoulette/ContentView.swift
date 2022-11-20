@@ -23,7 +23,7 @@ struct ContentView: View {
     @State var upperNumber = "10"
     @State var pizzaNum = 0
     @State var pizzaList:[Int] = []
-    
+        
     @State var proxy: GeometryProxy?
     @State var scrollView: GeometryProxy?
     @State var offset: CGFloat = 0
@@ -73,10 +73,14 @@ struct ContentView: View {
 //        }
 //    }
     
+    //                hapticSeq(type: "heavy", amount: 35, delay: 0.05)
+    //                hapticSeq(type: "medium", amount: 35, delay: 0.1)
+    //                hapticSeq(type: "light", amount: 20, delay: 0.14)
+    //                hapticSeq(type: "light", amount: 10, delay: 0.2)
+    
     func hapticSequence(types: [String], pctIndices: [Int], amount: Int, delay: Double) -> Void {
         
         var pattern = ""
-        
         var id = 0
         
         for type in types {
@@ -109,9 +113,7 @@ struct ContentView: View {
             }
             id+=1
         }
-                
         Haptic.play(pattern, delay: delay)
-
     }
     
     func dashAdder(id: Int) -> String {
@@ -127,8 +129,35 @@ struct ContentView: View {
         } else if (id >= 3) {
             dashes += "------------"
         }
-        
         return dashes
+    }
+    
+    func wheelSpin() -> Void {
+        offset = 0
+        withAnimation(Animation.timingCurve(0, 0.8, 0.2, 1, duration: 10)) {
+                offset = CGFloat(-(proxy?.size.height ?? 0) + (scrollView?.size.height ?? 0)) + 60
+            }
+    }
+    
+    func getPizza(min: Int, max: Int) -> Void {
+        var tempPizzaList:[Int] = []
+        let tempLowerNum:Int = (min)
+        let tempUpperNum:Int = (max)
+        if tempLowerNum >= tempUpperNum {
+            return
+        }
+        let numRange = (tempLowerNum...tempUpperNum)
+        tempPizzaList.append(contentsOf: numRange)
+        tempPizzaList.shuffle()
+        while tempPizzaList.count < 100 {
+            tempPizzaList.append(contentsOf: tempPizzaList)
+        }
+        for _ in 1...3 { tempPizzaList.append( Int.random(in: tempLowerNum...tempUpperNum))
+        }
+        pizzaNum = tempPizzaList.last ?? 0
+        pizzaList = tempPizzaList
+        showPizza = true
+        wheelSpin()
     }
     
     var body: some View {
@@ -143,7 +172,6 @@ struct ContentView: View {
                         VStack {
                             ForEach(pizzaList, id: \.self) { pizza in
                                 Text("\(pizza)").font(.custom("Cubano-Regular", size: 200))
-                                //Text("Global : (\(Int(scrollView.frame(in: .global).midX)), \(Int(scrollView.frame(in: .global).midY))) Local: (\(Int(scrollView.frame(in: .local).midX)), \(Int(scrollView.frame(in: .local).midY)))")
                             }
                         }
                         .background(
@@ -167,6 +195,7 @@ struct ContentView: View {
                     }
                     .onAppear {
                         self.scrollView = scrollView
+                        wheelSpin()
                     }
                 }
             }
@@ -204,32 +233,8 @@ struct ContentView: View {
             }
             .padding(.bottom, 20)
             Button {
-                var tempPizzaList:[Int] = []
-                let tempLowerNum:Int = (Int(lowerNumber) ?? 0)
-                let tempUpperNum:Int = (Int(upperNumber) ?? 0)
-                if tempLowerNum >= tempUpperNum {
-                    return
-                }
-                let numRange = (tempLowerNum...tempUpperNum)
-                tempPizzaList.append(contentsOf: numRange)
-                tempPizzaList.shuffle()
-                while tempPizzaList.count < 100 {
-                    tempPizzaList.append(contentsOf: tempPizzaList)
-                }
-                for _ in 1...3 { tempPizzaList.append( Int.random(in: tempLowerNum...tempUpperNum))
-                }
-                pizzaNum = tempPizzaList.last ?? 0
-                pizzaList = tempPizzaList
-                offset = 0
-                    withAnimation(Animation.timingCurve(0, 0.8, 0.2, 1, duration: 10)) {
-                        offset = CGFloat(-(proxy?.size.height ?? 0) + (scrollView?.size.height ?? 0)) + 70
-                    }
-//                hapticSeq(type: "heavy", amount: 35, delay: 0.05)
-//                hapticSeq(type: "medium", amount: 35, delay: 0.1)
-//                hapticSeq(type: "light", amount: 20, delay: 0.14)
-//                hapticSeq(type: "light", amount: 10, delay: 0.2)
+                getPizza(min: Int(lowerNumber) ?? 0, max: Int(upperNumber) ?? 0)
                 hapticSequence(types: ["heavy", "heavy", "medium", "light"], pctIndices: [35,15,5,4], amount: pizzaList.count, delay: 0.05)
-                showPizza = true
                 self.hideKeyboard()
             } label: {
                 Text("Prøv lykken!")
