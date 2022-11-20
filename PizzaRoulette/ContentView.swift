@@ -37,40 +37,98 @@ struct ContentView: View {
             return input
         }
     }
+//
+//    func hapticSeq(type: String, amount: Int, delay: Double) -> Void {
+//
+//        var pattern = ""
+//
+//        switch (type) {
+//        case "heavy":
+//            for _ in 0...amount {
+//                pattern += "O-"
+//            }
+//            Haptic.play(pattern, delay: delay)
+//        case "medium":
+//            for _ in 0...amount {
+//                pattern += "o-"
+//            }
+//            Haptic.play(pattern, delay: delay)
+//        case "light":
+//            for _ in 0...amount {
+//                pattern += ".-"
+//            }
+//            Haptic.play(pattern, delay: delay)
+//        case "rigid":
+//            for _ in 0...amount {
+//                pattern += "X-"
+//            }
+//            Haptic.play(pattern, delay: delay)
+//        case "soft":
+//            for _ in 0...amount {
+//                pattern += "x-"
+//            }
+//            Haptic.play(pattern, delay: delay)
+//        default:
+//            return
+//        }
+//    }
     
-    func hapticSeq(type: String, amount: Int, delay: Double) -> Void {
+    func hapticSequence(types: [String], pctIndices: [Int], amount: Int, delay: Double) -> Void {
         
         var pattern = ""
         
-        switch (type) {
-        case "heavy":
-            for _ in 0...amount {
-                pattern += "O-"
+        var id = 0
+        
+        for type in types {
+            
+            let currentAmount = amount/100*pctIndices[id]
+            
+            switch (type) {
+            case "heavy":
+                for _ in 0...currentAmount {
+                    pattern += "O" + dashAdder(id: id)
+                }
+            case "medium":
+                for _ in 0...currentAmount {
+                    pattern += "o" + dashAdder(id: id)
+                }
+            case "light":
+                for _ in 0...currentAmount {
+                    pattern += "." + dashAdder(id: id)
+                }
+            case "rigid":
+                for _ in 0...currentAmount {
+                    pattern += "X" + dashAdder(id: id)
+                }
+            case "soft":
+                for _ in 0...currentAmount {
+                    pattern += "x" + dashAdder(id: id)
+                }
+            default:
+                return
             }
-            Haptic.play(pattern, delay: delay)
-        case "medium":
-            for _ in 0...amount {
-                pattern += "o-"
-            }
-            Haptic.play(pattern, delay: delay)
-        case "light":
-            for _ in 0...amount {
-                pattern += ".-"
-            }
-            Haptic.play(pattern, delay: delay)
-        case "rigid":
-            for _ in 0...amount {
-                pattern += "X-"
-            }
-            Haptic.play(pattern, delay: delay)
-        case "soft":
-            for _ in 0...amount {
-                pattern += "x-"
-            }
-            Haptic.play(pattern, delay: delay)
-        default:
-            return
+            id+=1
         }
+                
+        Haptic.play(pattern, delay: delay)
+
+    }
+    
+    func dashAdder(id: Int) -> String {
+        
+        var dashes = ""
+        
+        if (id < 1) {
+            dashes += "-"
+        } else if (id == 1) {
+            dashes += "---"
+        } else if (id == 2) {
+            dashes += "------"
+        } else if (id >= 3) {
+            dashes += "------------"
+        }
+        
+        return dashes
     }
     
     var body: some View {
@@ -146,7 +204,6 @@ struct ContentView: View {
             }
             .padding(.bottom, 20)
             Button {
-                //Haptic.impact(.light).generate()
                 var tempPizzaList:[Int] = []
                 let tempLowerNum:Int = (Int(lowerNumber) ?? 0)
                 let tempUpperNum:Int = (Int(upperNumber) ?? 0)
@@ -167,10 +224,11 @@ struct ContentView: View {
                     withAnimation(Animation.timingCurve(0, 0.8, 0.2, 1, duration: 10)) {
                         offset = CGFloat(-(proxy?.size.height ?? 0) + (scrollView?.size.height ?? 0)) + 70
                     }
-                hapticSeq(type: "heavy", amount: 35, delay: 0.05)
-                hapticSeq(type: "medium", amount: 35, delay: 0.1)
-                hapticSeq(type: "light", amount: 20, delay: 0.14)
-                hapticSeq(type: "light", amount: 10, delay: 0.2)
+//                hapticSeq(type: "heavy", amount: 35, delay: 0.05)
+//                hapticSeq(type: "medium", amount: 35, delay: 0.1)
+//                hapticSeq(type: "light", amount: 20, delay: 0.14)
+//                hapticSeq(type: "light", amount: 10, delay: 0.2)
+                hapticSequence(types: ["heavy", "heavy", "medium", "light"], pctIndices: [35,15,5,4], amount: pizzaList.count, delay: 0.05)
                 showPizza = true
                 self.hideKeyboard()
             } label: {
