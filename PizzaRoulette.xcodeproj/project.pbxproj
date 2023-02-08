@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A549DB4299400F6007B64D6 /* Recoleta-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A549DAD299400F6007B64D6 /* Recoleta-Regular.ttf */; };
+		4A549DB5299400F6007B64D6 /* Recoleta-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A549DAE299400F6007B64D6 /* Recoleta-Black.ttf */; };
+		4A549DB6299400F6007B64D6 /* Recoleta-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A549DAF299400F6007B64D6 /* Recoleta-Light.ttf */; };
+		4A549DB7299400F6007B64D6 /* Recoleta-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A549DB0299400F6007B64D6 /* Recoleta-Medium.ttf */; };
+		4A549DB8299400F6007B64D6 /* Recoleta-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A549DB1299400F6007B64D6 /* Recoleta-Thin.ttf */; };
+		4A549DB9299400F6007B64D6 /* Recoleta-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A549DB2299400F6007B64D6 /* Recoleta-Bold.ttf */; };
+		4A549DBA299400F6007B64D6 /* Recoleta-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A549DB3299400F6007B64D6 /* Recoleta-SemiBold.ttf */; };
 		4AD9747D2926CB7F009F8013 /* TrackableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD9747C2926CB7F009F8013 /* TrackableScrollView.swift */; };
 		4AD9747F2926CC16009F8013 /* ScrollOffsetPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD9747E2926CC16009F8013 /* ScrollOffsetPreferenceKey.swift */; };
 		4AD974822926D64F009F8013 /* Cubano-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4AD974812926D58C009F8013 /* Cubano-Regular.ttf */; };
@@ -53,6 +60,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4A549DAD299400F6007B64D6 /* Recoleta-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Recoleta-Regular.ttf"; path = "../../../../../Library/Fonts/Recoleta-Regular.ttf"; sourceTree = "<group>"; };
+		4A549DAE299400F6007B64D6 /* Recoleta-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Recoleta-Black.ttf"; path = "../../../../../Library/Fonts/Recoleta-Black.ttf"; sourceTree = "<group>"; };
+		4A549DAF299400F6007B64D6 /* Recoleta-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Recoleta-Light.ttf"; path = "../../../../../Library/Fonts/Recoleta-Light.ttf"; sourceTree = "<group>"; };
+		4A549DB0299400F6007B64D6 /* Recoleta-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Recoleta-Medium.ttf"; path = "../../../../../Library/Fonts/Recoleta-Medium.ttf"; sourceTree = "<group>"; };
+		4A549DB1299400F6007B64D6 /* Recoleta-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Recoleta-Thin.ttf"; path = "../../../../../Library/Fonts/Recoleta-Thin.ttf"; sourceTree = "<group>"; };
+		4A549DB2299400F6007B64D6 /* Recoleta-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Recoleta-Bold.ttf"; path = "../../../../../Library/Fonts/Recoleta-Bold.ttf"; sourceTree = "<group>"; };
+		4A549DB3299400F6007B64D6 /* Recoleta-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Recoleta-SemiBold.ttf"; path = "../../../../../Library/Fonts/Recoleta-SemiBold.ttf"; sourceTree = "<group>"; };
 		4AD9747C2926CB7F009F8013 /* TrackableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackableScrollView.swift; sourceTree = "<group>"; };
 		4AD9747E2926CC16009F8013 /* ScrollOffsetPreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollOffsetPreferenceKey.swift; sourceTree = "<group>"; };
 		4AD974812926D58C009F8013 /* Cubano-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Cubano-Regular.ttf"; path = "../../../../../Downloads/Cubano-Regular.ttf"; sourceTree = "<group>"; };
@@ -99,6 +113,13 @@
 		4AD974802926D560009F8013 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				4A549DAE299400F6007B64D6 /* Recoleta-Black.ttf */,
+				4A549DB2299400F6007B64D6 /* Recoleta-Bold.ttf */,
+				4A549DAF299400F6007B64D6 /* Recoleta-Light.ttf */,
+				4A549DB0299400F6007B64D6 /* Recoleta-Medium.ttf */,
+				4A549DAD299400F6007B64D6 /* Recoleta-Regular.ttf */,
+				4A549DB3299400F6007B64D6 /* Recoleta-SemiBold.ttf */,
+				4A549DB1299400F6007B64D6 /* Recoleta-Thin.ttf */,
 				4AD974812926D58C009F8013 /* Cubano-Regular.ttf */,
 			);
 			path = Fonts;
@@ -281,8 +302,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A549DBA299400F6007B64D6 /* Recoleta-SemiBold.ttf in Resources */,
+				4A549DB9299400F6007B64D6 /* Recoleta-Bold.ttf in Resources */,
+				4A549DB6299400F6007B64D6 /* Recoleta-Light.ttf in Resources */,
 				4ADC5C07291FEB0D007A89F7 /* Preview Assets.xcassets in Resources */,
+				4A549DB7299400F6007B64D6 /* Recoleta-Medium.ttf in Resources */,
 				4ADC5C04291FEB0D007A89F7 /* Assets.xcassets in Resources */,
+				4A549DB8299400F6007B64D6 /* Recoleta-Thin.ttf in Resources */,
+				4A549DB4299400F6007B64D6 /* Recoleta-Regular.ttf in Resources */,
+				4A549DB5299400F6007B64D6 /* Recoleta-Black.ttf in Resources */,
 				4AD974822926D64F009F8013 /* Cubano-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -532,6 +560,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PizzaRoulette/Preview Content\"";
@@ -562,6 +591,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PizzaRoulette/Preview Content\"";

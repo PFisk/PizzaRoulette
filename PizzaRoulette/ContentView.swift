@@ -37,46 +37,6 @@ struct ContentView: View {
             return input
         }
     }
-//
-//    func hapticSeq(type: String, amount: Int, delay: Double) -> Void {
-//
-//        var pattern = ""
-//
-//        switch (type) {
-//        case "heavy":
-//            for _ in 0...amount {
-//                pattern += "O-"
-//            }
-//            Haptic.play(pattern, delay: delay)
-//        case "medium":
-//            for _ in 0...amount {
-//                pattern += "o-"
-//            }
-//            Haptic.play(pattern, delay: delay)
-//        case "light":
-//            for _ in 0...amount {
-//                pattern += ".-"
-//            }
-//            Haptic.play(pattern, delay: delay)
-//        case "rigid":
-//            for _ in 0...amount {
-//                pattern += "X-"
-//            }
-//            Haptic.play(pattern, delay: delay)
-//        case "soft":
-//            for _ in 0...amount {
-//                pattern += "x-"
-//            }
-//            Haptic.play(pattern, delay: delay)
-//        default:
-//            return
-//        }
-//    }
-    
-    //                hapticSeq(type: "heavy", amount: 35, delay: 0.05)
-    //                hapticSeq(type: "medium", amount: 35, delay: 0.1)
-    //                hapticSeq(type: "light", amount: 20, delay: 0.14)
-    //                hapticSeq(type: "light", amount: 10, delay: 0.2)
     
     func hapticSequence(types: [String], pctIndices: [Int], amount: Int, delay: Double) -> Void {
         
@@ -134,8 +94,9 @@ struct ContentView: View {
     
     func wheelSpin() -> Void {
         offset = 0
+        //Duration time is hardcoded with haptics to match. A dynamic approach is TODO
         withAnimation(Animation.timingCurve(0, 0.8, 0.2, 1, duration: 10)) {
-                offset = CGFloat(-(proxy?.size.height ?? 0) + (scrollView?.size.height ?? 0)) + 60
+                offset = CGFloat(-(proxy?.size.width ?? 0) + (scrollView?.size.width ?? 0)) + 80
             }
     }
     
@@ -163,15 +124,25 @@ struct ContentView: View {
     var body: some View {
         
         VStack {
+            VStack {
+                Text("Pizza").font(.custom("Recoleta-Bold", size: 56))
+                Text("Roulette").font(.custom("Recoleta-Bold", size: 56)).offset(y: -20)
+            }
+            .padding(.top, 40)
             Spacer()
             if !showPizza {
-                Text("Input pizza ranges...").font(.system(size: 24))
+                Text("Input pizza ranges below...").font(.custom("Recoleta-Medium", size: 24))
             } else {
                 GeometryReader { scrollView in
-                    ScrollView {
-                        VStack {
+                    ScrollView(.horizontal) {
+                        HStack {
                             ForEach(pizzaList, id: \.self) { pizza in
-                                Text("\(pizza)").font(.custom("Cubano-Regular", size: 200))
+                                ZStack {
+                                    Text("\(pizza)").font(.custom("Cubano-Regular", size: 96))
+                                        .frame(width: 170, height: 200)
+                                        .background(Color(red: 247/255, green: 201/255, blue: 141/255))
+                                        .cornerRadius(20)
+                                }
                             }
                         }
                         .background(
@@ -181,17 +152,17 @@ struct ContentView: View {
                                 }
                             }
                         )
-                        .offset(y: offset)
+                        .offset(x: offset)
                     }
                     .scrollDisabled(true)
                     .frame(width: scrollView.size.width, height: scrollView.size.height)
                     .overlay {
                         LinearGradient(gradient: Gradient(stops: [
                             .init(color: .white, location: 0.0),
-                            .init(color: .clear, location: 0.2),
-                            .init(color: .clear, location: 0.8),
+                            .init(color: .clear, location: 0.1),
+                            .init(color: .clear, location: 0.9),
                             .init(color: .white, location: 1.0),
-                        ]), startPoint: .top, endPoint: .bottom)
+                        ]), startPoint: .leading, endPoint: .trailing)
                     }
                     .onAppear {
                         self.scrollView = scrollView
@@ -200,53 +171,60 @@ struct ContentView: View {
                 }
             }
             Spacer()
-            HStack {
-                TextField("Min", text: $lowerNumber)
-                    .keyboardType(.numberPad)
-                    .multilineTextAlignment(.center)
-                    .font(.system(size: 24))
-                    .background( RoundedRectangle(cornerRadius: 12) .fill(Color.init(red: 0.9, green: 0.9, blue: 0.9)))
-                    .onReceive(Just(lowerNumber)) { newValue in
-                        lowerNumber = limitText(textLimit, input: lowerNumber)
-                        let filtered = newValue.filter { "0123456789".contains($0) }
-                        if filtered != newValue {
-                            self.lowerNumber = filtered
+            VStack {
+                HStack {
+                    TextField("Min", text: $lowerNumber)
+                        .keyboardType(.numberPad)
+                        .multilineTextAlignment(.center)
+                        .font(.custom("Recoleta-SemiBold", size: 24))
+                        .frame(height: 48)
+                        .background( RoundedRectangle(cornerRadius: 20) .fill(Color.init(red: 0.9, green: 0.9, blue: 0.9)))
+                        .onReceive(Just(lowerNumber)) { newValue in
+                            lowerNumber = limitText(textLimit, input: lowerNumber)
+                            let filtered = newValue.filter { "0123456789".contains($0) }
+                            if filtered != newValue {
+                                self.lowerNumber = filtered
+                            }
                         }
-                    }
-                    .padding(.leading, 40)
-                    .padding(.trailing, 40)
-                
-                TextField("Max", text: $upperNumber)
-                    .keyboardType(.numberPad)
-                    .multilineTextAlignment(.center)
-                    .font(.system(size: 24))
-                    .background( RoundedRectangle(cornerRadius: 12) .fill(Color.init(red: 0.9, green: 0.9, blue: 0.9)))
-                    .onReceive(Just(upperNumber)) { newValue in
-                        upperNumber = limitText(textLimit, input: upperNumber)
-                        let filtered = newValue.filter { "0123456789".contains($0) }
-                        if filtered != newValue {
-                            self.upperNumber = filtered
+                        .padding(.trailing, 50)
+                    
+                    TextField("Max", text: $upperNumber)
+                        .keyboardType(.numberPad)
+                        .multilineTextAlignment(.center)
+                        .font(.custom("Recoleta-SemiBold", size: 24))
+                        .frame(height: 48)
+                        .background( RoundedRectangle(cornerRadius: 20) .fill(Color.init(red: 0.9, green: 0.9, blue: 0.9)))
+                        .onReceive(Just(upperNumber)) { newValue in
+                            upperNumber = limitText(textLimit, input: upperNumber)
+                            let filtered = newValue.filter { "0123456789".contains($0) }
+                            if filtered != newValue {
+                                self.upperNumber = filtered
+                            }
                         }
-                    }
-                    .padding(.leading, 40)
-                    .padding(.trailing, 40)
+                        .padding(.leading, 50)
+                }
+                .padding(.bottom, 20)
+                Button {
+                    getPizza(min: Int(lowerNumber) ?? 0, max: Int(upperNumber) ?? 0)
+                    //Haptic sequence is hardcoded to fit 10 sec duration. Dynamic approach is TODO
+                    hapticSequence(types: ["heavy", "heavy", "medium", "light"], pctIndices: [35,15,5,4], amount: pizzaList.count, delay: 0.05)
+                    self.hideKeyboard()
+                } label: {
+                    Text("Prøv lykken!")
+                        .font(.custom("Recoleta-SemiBold", size: 24))
+                        .padding(20)
+                }
+                .frame(maxWidth: .infinity)
+                .background(Color(red: 255/255, green: 110/255, blue: 64/255))
+                .cornerRadius(20)
+                .foregroundColor(.black)
+                .shadow(color: Color(red: 255/255, green: 110/255, blue: 64/255, opacity: 0.7), radius: 10, y: 10)
             }
-            .padding(.bottom, 20)
-            Button {
-                getPizza(min: Int(lowerNumber) ?? 0, max: Int(upperNumber) ?? 0)
-                hapticSequence(types: ["heavy", "heavy", "medium", "light"], pctIndices: [35,15,5,4], amount: pizzaList.count, delay: 0.05)
+            .padding(.leading, 40)
+            .padding(.trailing, 40)
+            .onTapGesture {
                 self.hideKeyboard()
-            } label: {
-                Text("Prøv lykken!")
-                    .padding(20)
             }
-            .background(Color(red: 247/255, green: 201/255, blue: 141/255))
-            .cornerRadius(12)
-            .foregroundColor(.black)
-        }
-        .padding()
-        .onTapGesture {
-            self.hideKeyboard()
         }
     }
 }

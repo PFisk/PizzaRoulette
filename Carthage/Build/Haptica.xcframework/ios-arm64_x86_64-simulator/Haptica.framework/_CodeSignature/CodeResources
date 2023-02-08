@@ -14,7 +14,7 @@
 		</data>
 		<key>Headers/Haptica-Swift.h</key>
 		<data>
-		+L0uhwbh/zBFXQX1fQm6EkjmUuU=
+		c5CAx8MOmUhPDYpLYHgWOs4gelw=
 		</data>
 		<key>Headers/Haptica.h</key>
 		<data>
@@ -22,15 +22,15 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		IPEgxscjdqK23rQp/Lcg1A0cNjg=
+		0KAgKSZevgInRUQd2erxgfa6xo0=
 		</data>
 		<key>Modules/Haptica.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		XI5ngXc9H7jDQLGYLLIOYONJqVI=
+		yO0YHCYRWZ/fbmOMFG3PH+QeczU=
 		</data>
 		<key>Modules/Haptica.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		bnWvIwUShHishsn2iFKlWT9NuBw=
+		s37SSRdJU1mwJZNSJd5BYQiqil4=
 		</data>
 		<key>Modules/Haptica.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -38,11 +38,11 @@
 		</data>
 		<key>Modules/Haptica.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		RJ6jvE+m/+Z/V5cFd+M5MsQIMHY=
+		2ybUynhDGHxAqxg5MtQu3UzZqTE=
 		</data>
 		<key>Modules/Haptica.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		dA2ILZqzhUvVEn/1IiIj2UXLTzY=
+		ZEIMIjuL88/9UpuyDR4XJyd6eCc=
 		</data>
 		<key>Modules/Haptica.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -50,11 +50,11 @@
 		</data>
 		<key>Modules/Haptica.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		Lk0HTiZDDS/3Hb2bkFZjiH8rjtk=
+		ghYg37QMn1L2cArE+T944LdTI9Y=
 		</data>
 		<key>Modules/Haptica.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		Vs9lhhEsclPFyQdSSrae5Q6F9+g=
+		JvU8bzQrAJcAKHrIyANTkJFbD3U=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -93,11 +93,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			+L0uhwbh/zBFXQX1fQm6EkjmUuU=
+			c5CAx8MOmUhPDYpLYHgWOs4gelw=
 			</data>
 			<key>hash2</key>
 			<data>
-			et4NsOjhd2oK/A6GanLM1wJbtX0qfY1rvOxZOk4fNYw=
+			Cjtsz0xoz8W/YBvD/hOH6fHPg0Ez41xAtq+eVmldyyU=
 			</data>
 		</dict>
 		<key>Headers/Haptica.h</key>
@@ -115,22 +115,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			XI5ngXc9H7jDQLGYLLIOYONJqVI=
+			yO0YHCYRWZ/fbmOMFG3PH+QeczU=
 			</data>
 			<key>hash2</key>
 			<data>
-			GdCQnBOytMEabDAHTWTXWIg6xLQsTmgwy/6UYxntDxc=
+			5zGPEZZcLfINVXjlJX3xW/rlRiqvYj6HdKy3DOFuxy4=
 			</data>
 		</dict>
 		<key>Modules/Haptica.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			bnWvIwUShHishsn2iFKlWT9NuBw=
+			s37SSRdJU1mwJZNSJd5BYQiqil4=
 			</data>
 			<key>hash2</key>
 			<data>
-			orM2mrHzL8PKiOS4+hCac4ZrDQQgZAVga7s/YhtOMJw=
+			2Hb0fMPHdWw+DLHVzWMyZmN6BUZ2CBoYssmwkh3OouY=
 			</data>
 		</dict>
 		<key>Modules/Haptica.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
@@ -148,22 +148,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			RJ6jvE+m/+Z/V5cFd+M5MsQIMHY=
+			2ybUynhDGHxAqxg5MtQu3UzZqTE=
 			</data>
 			<key>hash2</key>
 			<data>
-			TupTo3/631XQ5p93fehMUwwMG+JCEt3WmIjS6Ntj0BM=
+			CAcVLVZTgHwyS+9F/FztvwjNcMYlXvvRI5t5ZW9j6Ds=
 			</data>
 		</dict>
 		<key>Modules/Haptica.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			dA2ILZqzhUvVEn/1IiIj2UXLTzY=
+			ZEIMIjuL88/9UpuyDR4XJyd6eCc=
 			</data>
 			<key>hash2</key>
 			<data>
-			a5SzS0vBe3elS/3zitPWi3pMfjZM8POxqYq+8+xTg7w=
+			SdIgJffXI5oUP/1/mLrFLsXjPPtDmAYJ8QeF+KhPO/0=
 			</data>
 		</dict>
 		<key>Modules/Haptica.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
@@ -181,22 +181,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Lk0HTiZDDS/3Hb2bkFZjiH8rjtk=
+			ghYg37QMn1L2cArE+T944LdTI9Y=
 			</data>
 			<key>hash2</key>
 			<data>
-			5+IAdK5tpX46p+DndRbiFHCvA0WuyjdxBF4iIP9hyAc=
+			q5AdcTBVS+0lPK2SiHw9sBBNeUGHi8H8G0jCdDFX9Ew=
 			</data>
 		</dict>
 		<key>Modules/Haptica.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Vs9lhhEsclPFyQdSSrae5Q6F9+g=
+			JvU8bzQrAJcAKHrIyANTkJFbD3U=
 			</data>
 			<key>hash2</key>
 			<data>
-			JxAt40ECUGJHRZJHet3MSdfvMBZpo7R35EQBo8HISwM=
+			qJzv4LsUCszH8AD3lxzTkvrbsMVUxIgimHI5O1JG7Ak=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
