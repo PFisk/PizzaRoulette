@@ -14,6 +14,7 @@
 		4A549DB8299400F6007B64D6 /* Recoleta-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A549DB1299400F6007B64D6 /* Recoleta-Thin.ttf */; };
 		4A549DB9299400F6007B64D6 /* Recoleta-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A549DB2299400F6007B64D6 /* Recoleta-Bold.ttf */; };
 		4A549DBA299400F6007B64D6 /* Recoleta-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A549DB3299400F6007B64D6 /* Recoleta-SemiBold.ttf */; };
+		4ABCCA4C2A018FCE0031BC22 /* RouletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABCCA4B2A018FCE0031BC22 /* RouletteView.swift */; };
 		4AD9747D2926CB7F009F8013 /* TrackableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD9747C2926CB7F009F8013 /* TrackableScrollView.swift */; };
 		4AD9747F2926CC16009F8013 /* ScrollOffsetPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD9747E2926CC16009F8013 /* ScrollOffsetPreferenceKey.swift */; };
 		4AD974822926D64F009F8013 /* Cubano-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4AD974812926D58C009F8013 /* Cubano-Regular.ttf */; };
@@ -67,6 +68,7 @@
 		4A549DB1299400F6007B64D6 /* Recoleta-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Recoleta-Thin.ttf"; path = "../../../../../Library/Fonts/Recoleta-Thin.ttf"; sourceTree = "<group>"; };
 		4A549DB2299400F6007B64D6 /* Recoleta-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Recoleta-Bold.ttf"; path = "../../../../../Library/Fonts/Recoleta-Bold.ttf"; sourceTree = "<group>"; };
 		4A549DB3299400F6007B64D6 /* Recoleta-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Recoleta-SemiBold.ttf"; path = "../../../../../Library/Fonts/Recoleta-SemiBold.ttf"; sourceTree = "<group>"; };
+		4ABCCA4B2A018FCE0031BC22 /* RouletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteView.swift; sourceTree = "<group>"; };
 		4AD9747C2926CB7F009F8013 /* TrackableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackableScrollView.swift; sourceTree = "<group>"; };
 		4AD9747E2926CC16009F8013 /* ScrollOffsetPreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollOffsetPreferenceKey.swift; sourceTree = "<group>"; };
 		4AD974812926D58C009F8013 /* Cubano-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Cubano-Regular.ttf"; path = "../../../../../Downloads/Cubano-Regular.ttf"; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				4AD974832926D7C9009F8013 /* Info.plist */,
 				4ADC5BFF291FEB0D007A89F7 /* PizzaRouletteApp.swift */,
 				4ADC5C01291FEB0D007A89F7 /* ContentView.swift */,
+				4ABCCA4B2A018FCE0031BC22 /* RouletteView.swift */,
 				4AD974802926D560009F8013 /* Fonts */,
 				4ADC5C03291FEB0D007A89F7 /* Assets.xcassets */,
 				4ADC5C05291FEB0D007A89F7 /* Preview Content */,
@@ -404,6 +407,7 @@
 				4AD9747F2926CC16009F8013 /* ScrollOffsetPreferenceKey.swift in Sources */,
 				4AD9747D2926CB7F009F8013 /* TrackableScrollView.swift in Sources */,
 				4ADC5C02291FEB0D007A89F7 /* ContentView.swift in Sources */,
+				4ABCCA4C2A018FCE0031BC22 /* RouletteView.swift in Sources */,
 				4ADC5C00291FEB0D007A89F7 /* PizzaRouletteApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

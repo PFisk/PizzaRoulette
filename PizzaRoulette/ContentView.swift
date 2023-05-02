@@ -23,10 +23,14 @@ struct ContentView: View {
     @State var upperNumber = "10"
     @State var pizzaNum = 0
     @State var pizzaList:[Int] = []
-        
+    
+    @State var selectedIndex = 0
+    
     @State var proxy: GeometryProxy?
-    @State var scrollView: GeometryProxy?
-    @State var offset: CGFloat = 0
+    
+    @State var isButtonDisabled: Bool = false
+    
+    let animationTime: Double = 2
     
     let textLimit = 3
     
@@ -92,35 +96,6 @@ struct ContentView: View {
         return dashes
     }
     
-    func wheelSpin() -> Void {
-        offset = 0
-        //Duration time is hardcoded with haptics to match. A dynamic approach is TODO
-        withAnimation(Animation.timingCurve(0, 0.8, 0.2, 1, duration: 10)) {
-                offset = CGFloat(-(proxy?.size.width ?? 0) + (scrollView?.size.width ?? 0)) + 80
-            }
-    }
-    
-    func getPizza(min: Int, max: Int) -> Void {
-        var tempPizzaList:[Int] = []
-        let tempLowerNum:Int = (min)
-        let tempUpperNum:Int = (max)
-        if tempLowerNum >= tempUpperNum {
-            return
-        }
-        let numRange = (tempLowerNum...tempUpperNum)
-        tempPizzaList.append(contentsOf: numRange)
-        tempPizzaList.shuffle()
-        while tempPizzaList.count < 100 {
-            tempPizzaList.append(contentsOf: tempPizzaList)
-        }
-        for _ in 1...3 { tempPizzaList.append( Int.random(in: tempLowerNum...tempUpperNum))
-        }
-        pizzaNum = tempPizzaList.last ?? 0
-        pizzaList = tempPizzaList
-        showPizza = true
-        wheelSpin()
-    }
-    
     var body: some View {
         
         VStack {
@@ -130,45 +105,17 @@ struct ContentView: View {
             }
             .padding(.top, 40)
             Spacer()
-            if !showPizza {
-                Text("Input pizza ranges below...").font(.custom("Recoleta-Medium", size: 24))
-            } else {
-                GeometryReader { scrollView in
-                    ScrollView(.horizontal) {
-                        HStack {
-                            ForEach(pizzaList, id: \.self) { pizza in
-                                ZStack {
-                                    Text("\(pizza)").font(.custom("Cubano-Regular", size: 96))
-                                        .frame(width: 170, height: 200)
-                                        .background(Color(red: 247/255, green: 201/255, blue: 141/255))
-                                        .cornerRadius(20)
-                                }
-                            }
-                        }
-                        .background(
-                            GeometryReader { proxy in
-                                Color.clear.onAppear {
-                                    self.proxy = proxy
-                                }
-                            }
-                        )
-                        .offset(x: offset)
-                    }
-                    .scrollDisabled(true)
-                    .frame(width: scrollView.size.width, height: scrollView.size.height)
-                    .overlay {
-                        LinearGradient(gradient: Gradient(stops: [
-                            .init(color: .white, location: 0.0),
-                            .init(color: .clear, location: 0.1),
-                            .init(color: .clear, location: 0.9),
-                            .init(color: .white, location: 1.0),
-                        ]), startPoint: .leading, endPoint: .trailing)
-                    }
-                    .onAppear {
-                        self.scrollView = scrollView
-                        wheelSpin()
-                    }
-                }
+            ZStack {
+                Text("Input pizza ranges below...").font(.custom("Recoleta-Medium", size: 24)).opacity(!showPizza ? 1.0 : 0.0)
+                RouletteView(selectedIndex: $selectedIndex).opacity(showPizza ? 1.0 : 0.0)
+            }
+//                        LinearGradient(gradient: Gradient(stops: [
+//                            .init(color: .white, location: 0.0),
+//                            .init(color: .clear, location: 0.1),
+//                            .init(color: .clear, location: 0.9),
+//                            .init(color: .white, location: 1.0),
+//                        ]), startPoint: .leading, endPoint: .trailing)
+//                    }
             }
             Spacer()
             VStack {
@@ -205,20 +152,23 @@ struct ContentView: View {
                 }
                 .padding(.bottom, 20)
                 Button {
-                    getPizza(min: Int(lowerNumber) ?? 0, max: Int(upperNumber) ?? 0)
+                    selectedIndex = Int.random(in: 0...10)
+                    showPizza = true
                     //Haptic sequence is hardcoded to fit 10 sec duration. Dynamic approach is TODO
-                    hapticSequence(types: ["heavy", "heavy", "medium", "light"], pctIndices: [35,15,5,4], amount: pizzaList.count, delay: 0.05)
+                    //hapticSequence(types: ["heavy", "heavy", "medium", "light"], pctIndices: [35,15,5,4], amount: pizzaList.count, delay: 0.05)
                     self.hideKeyboard()
                 } label: {
                     Text("Prøv lykken!")
                         .font(.custom("Recoleta-SemiBold", size: 24))
                         .padding(20)
                 }
+                .disabled(isButtonDisabled)
                 .frame(maxWidth: .infinity)
-                .background(Color(red: 255/255, green: 110/255, blue: 64/255))
+                .background(isButtonDisabled ? Color(red: 255/255, green: 110/255, blue: 64/255).opacity(0.4) : Color(red: 255/255, green: 110/255, blue: 64/255))
                 .cornerRadius(20)
                 .foregroundColor(.black)
-                .shadow(color: Color(red: 255/255, green: 110/255, blue: 64/255, opacity: 0.7), radius: 10, y: 10)
+                .shadow(color: Color(red: 255/255, green: 110/255, blue: 64/255, opacity: 0.7).opacity(isButtonDisabled ? 0 : 1), radius: 10, y: 10)
+                .animation(.default, value: isButtonDisabled)
             }
             .padding(.leading, 40)
             .padding(.trailing, 40)
@@ -227,7 +177,6 @@ struct ContentView: View {
             }
         }
     }
-}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
